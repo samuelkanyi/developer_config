@@ -5,7 +5,11 @@ html{
 a{
     background: transparent;
     text-decoration: none;
-    color: #343333
+    color: $color-primary
+}
+a:hover{
+    text-decoration: underline;
+    color: $blue;
 }
 body{
     color: #606c76;
@@ -17,7 +21,7 @@ body{
 }
 .navbar-main{
     background: #f4f5f6;
-    border-bottom: .1rem solid #d1d1d1;
+    border-bottom: .1rem solid $color-primary;
     display: block;
     height: 5.2rem;
     left: 0;
@@ -27,6 +31,7 @@ body{
     top: 0;
     width: 100%;
     z-index: 1;
+    margin-bottom: 3.3rem;
 }
 
 .nav-list{
@@ -48,6 +53,7 @@ body{
     line-height: 5.2rem;
     padding: 0;
     text-decoration: none;
+    color: $color-primary;
 }
 
 //container
@@ -70,4 +76,72 @@ body{
     line-height: 5.2rem;
     padding: 0;
     text-decoration: none;
+}
+
+.octocat {
+    border: 0;
+    color: #f4f5f6;
+    fill: #9b4dca;
+    height: 5.2rem;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 5.2rem;
+    z-index: 1;
+}
+
+.octocat .octocat-arm, .octocat .octocat-body {
+    fill: #f4f5f6;
+}
+
+.content{
+    margin-top: 10rem;
+}
+
+#search{
+    width: 100%;
+    height: 56px;
+    background: #fff;
+    font-size: 3.3rem;
+    padding-left: 20px;
+    padding-right: 90px;
+    box-shadow: none;
+    color: #111;
+    border: 1px solid $color-primary;
+    border-radius: 5px;
+    text-align: center
+}
+
+.main{
+    margin-top: 4rem;
+    display: block;
+    width: 100%;
+}
+.process{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5rem;
+}
+
+.process-image{
+    width: 30%;
+    margin-right: 4rem;
+}
+.process-body{
+    width: 70%;
+}
+button{
+    display: block;
+}
+img{
+    max-height: 100%;
+    max-width: 100%;
+}
+.user{
+    font-size: 1.5rem;
+    font-style: italic;
+    float:right;
+    color: #898888
+        
+        
 }
