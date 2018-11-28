@@ -13,7 +13,9 @@
 
     </head>
     <body>
-        
+        @yield('nav')
+        <div class="content container">
             @yield('content')
+        </div>
     </body>
 </html>
