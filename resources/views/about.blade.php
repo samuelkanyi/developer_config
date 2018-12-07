@@ -1,4 +1,4 @@
-@extends('layouts.nav')
+@extends('layouts.app')
 @section('content')
 <section class="section-about">
 <h1 class="about-title">ABOUT US PAGE</h1>
