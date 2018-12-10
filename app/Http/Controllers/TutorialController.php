@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tutorial;
-class TutorialController extends Controller
-{
+
+class TutorialController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         $tutorials = Tutorial::all();
         return view('tutorial.index')->with('tutorials', $tutorials);
     }
@@ -22,9 +22,8 @@ class TutorialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-    
+    public function create() {
+
         return view('tutorial.create');
     }
 
@@ -34,12 +33,26 @@ class TutorialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+        //validate the form
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
+        ]);
+
+        if ($request->hasFile('cover_image')) {
+            $fileToStore = $request->file('cover_image')->getClientOriginalName();
+            $request->file('cover_image')->storeAs('public', $fileToStore);
+        } else {
+            $fileToStore = 'noimage.jpg';
+        }
+
         $tutorial = new Tutorial;
         $tutorial->title = $request->input('title');
-        $tutorial->body= $request->input('body');
-        $tutorial->user = auth()->user()->id;
+        $tutorial->body = $request->input('body');
+        $tutorial->user_id = auth()->user()->id;
+        $tutorial->cover_image = $fileToStore;
         $tutorial->save();
         return redirect('tutorial');
     }
@@ -50,8 +63,7 @@ class TutorialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $tutorial = Tutorial::find($id);
         return view('tutorial.show')->with('tutorial', $tutorial);
     }
@@ -62,9 +74,9 @@ class TutorialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+        $tutorial = Tutorial::find($id);
+        return view('tutorial.edit')->with('tutorial', $tutorial);
     }
 
     /**
@@ -74,9 +86,14 @@ class TutorialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        $tutorial = Tutorial::find($id);
+        
+        $tutorial->title = $request->input('title');
+        $tutorial->body = $request->input('body');
+        $tutorial->user_id = auth()->user()->id;
+        $tutorial->save();
+        return redirect('tutorial');
     }
 
     /**
@@ -85,8 +102,10 @@ class TutorialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        $tutorial = Tutorial::find($id);
+        $tutorial->delete();
+        return redirect('home');
     }
+
 }
