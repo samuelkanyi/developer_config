@@ -7,7 +7,8 @@
         @foreach($tutorials as $tutorial)
             <div class="process">
                 <div class="process-image">
-                    <img src="{{asset('images/logo.png')}}" alt=""/>
+                    <?php $image = $tutorial->cover_image ?>
+                    <img src='{{asset("storage/$image")}}' alt="{{$tutorial->cover_image}}"/>
                 </div>
                 <div class="process-body">
                     <div class="process-title">
