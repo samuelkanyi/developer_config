@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserToRelatedTables extends Migration
+class AddCoverImage extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddUserToRelatedTables extends Migration
      */
     public function up()
     {
-        Schema::table('tutorials', function (Blueprint $table) {
-            $table->integer("user_id");
+        Schema::table('tutorials', function(Blueprint $table){
+            $table->string('cover_image');
+            
         });
     }
 
@@ -25,8 +26,9 @@ class AddUserToRelatedTables extends Migration
      */
     public function down()
     {
-        Schema::table('tutorials', function (Blueprint $table) {
-            $table->dropColumn("user_id");
+        Schema::table('tutorial', function(Blueprint $table){
+            $table->dropColumn('cover_image');
+            
         });
     }
 }
