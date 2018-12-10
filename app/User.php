@@ -29,6 +29,6 @@ class User extends Authenticatable
     ];
     
     public function tutorial(){
-        return $this->hasMany("App\Tutorial", "users");
+        return $this->hasMany("App\Tutorial");
     }
 }
