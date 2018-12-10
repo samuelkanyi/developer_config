@@ -1,75 +1,40 @@
 @extends('layouts.app')
 @section('content')
 <section class="section-about">
-<h1 class="about-title">ABOUT US PAGE</h1>
-<article>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien 
-    velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate 
-    diam rhoncus faucibus. Curabitur quis varius libero. Lorem ipsum dolor sit 
-    amet, consectetur adipiscing elit. Aliquam placerat sem at mauris suscipit 
-    porta. Cras metus velit, elementum sed pellentesque a, pharetra eu eros. 
-    Etiam facilisis placerat euismod. Nam faucibus neque arcu, quis accumsan 
-    leo tincidunt varius. In vel diam enim. Sed id ultrices ligula. Maecenas at 
-    urna arcu. Sed.
-</article>
+    <h1 class="about-title">ABOUT US PAGE</h1>
+    <article>
+        Mutall data managers started out in 2016.
+        We are a group of data mangers whose work is to develop, deploy and support data management services 
+        to small scale businesses
+    </article>
 </section>
 <section class="leader section-about">
     <h2>Leadership</h2>
     <div class="leader-image">
-        <img src="{{asset('images/profile.jpg')}}" alt="">
+        <img src="{{asset('storage/muraya.jpg')}}" alt="">
     </div>
     <article>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem.
+        Mutall data managers is headed by Peter Muraya.
+        Muraya has been in the data industry for close to 30 years. Working for 
+        organizations such as ICRAF
+        He leads a team of young developers to train them to become expert data managers
     </article>
 </section>
 
 <section class="team section-about">
     <h2>THE TEAM</h2>
     <div class="members">
-        <div class="members">
-            <div class="team-member">
-                <img src="{{asset('images/profile.jpg')}}" alt=""/>
-                <p>Team member name</p>
-                <p>
-                    Lead Programmer
-                </p>
-            </div>
-            <div class="team-member">
-                <img src="{{asset('images/profile.jpg')}}" alt=""/>
-                <p>Team member name</p>
-                <p>
-                    Lead Programmer
-                </p>
-            </div>
-            <div class="team-member">
-                <img src="{{asset('images/profile.jpg')}}" alt=""/>
-                <p>Team member name</p>
-                <p>
-                    Lead Programmer
-                </p>
-            </div>
-            <div class="team-member">
-                <img src="{{asset('images/profile.jpg')}}" alt=""/>
-                <p>Team member name</p>
-                <p>
-                    Lead Programmer
-                </p>
-            </div>
-            <div class="team-member">
-                <img src="{{asset('images/profile.jpg')}}" alt=""/>
-                <p>Team member name</p>
-                <p>
-                    Lead Programmer
-                </p>
-            </div>
-            <div class="team-member">
-                <img src="{{asset('images/profile.jpg')}}" alt=""/>
-                <p>Team member name</p>
-                <p>
-                    Lead Programmer
-                </p>
-            </div>
+        @if(count($users)>0)
+        @foreach($users as $user)
+        <?php $image = $user->avatar; ?>
+        <div class="team-member">
+            <img src='{{asset("storage/$image")}}' alt="{{$user->avatar}}"/>
+            <p style="text-align: center">{{$user->name}}</p>
+            <p style="text-align: center">{{ $user->position }}</p>
         </div>
+        @endforeach
+        @endif
+    </div>
 </section>
 <section class="about-section mentorship">
     <h1>Mentorship Program</h1>
