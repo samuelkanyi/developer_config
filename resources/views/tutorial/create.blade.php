@@ -8,8 +8,8 @@
     {{Form::label('article-ckeditor', 'The Body', ['class' => 'form-label'])}}
     {{Form::textarea('article-ckeditor', "", ['name'=>'body'])}}
 
-    {{Form::label('title-image', 'Title image', ['class' => 'form-label'])}}
-    
+    {{Form::label('cover-image', 'cover image', ['class' => 'form-label'])}}
+    {{Form::file('cover_image')}}
     {{Form::submit('Create', ['class' => 'btn'])}}
     {!! Form::close() !!}
 
