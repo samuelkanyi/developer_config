@@ -11,17 +11,13 @@
   |
  */
 
-Route::get('/', function() {
-    return view('index');
-});
+Route::get('/', 'TutorialController@index');
 
-Route::get('/about', function() {
-    return view('about');
-});
+Route::get('/about', 'AboutController@index');
 
 Route::resource('tutorial', 'TutorialController');
 
-Route::resource('picture', 'ImageController');
+Route::post('picture', 'ImageController@profile')->name('profile');
 
 Auth::routes();
 
