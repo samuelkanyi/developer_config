@@ -2,7 +2,6 @@
     <section class="container">
         <a class="company-title" href="/">Mutall Devs</a>
         <ul class="nav-list">
-            <li class="nav-list-item"><a class="list-item-link" href="/project">PROJECTS</a></li>
             <li class="nav-list-item"><a class="list-item-link" href="/about">ABOUT</a></li>
             @guest
             <li class="nav-list-item"><a class="list-item-link" href="{{ route('login') }}">LOGIN</a></li>
@@ -31,7 +30,6 @@
                 </a>
             <div class="dropdown-content">
                 <a href="/home">Dashboard</a>
-                <a href="">Upload Profile</a>
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
